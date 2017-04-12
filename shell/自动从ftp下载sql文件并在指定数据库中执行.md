@@ -6,6 +6,7 @@
 ## 脚本说明：
 * 该脚本的作用是从远程ftp主机下载sql脚本，并且自动在指定的数据库中执行。
 * 脚本运行过程中会打印日志，也会同步写入日志文件中
+* .exec_sql.sh脚本中的IFS=$(echo -en "\n\b")   可以避免文件名中含有空格时出现问题
 
 ## 使用说明：
 * sql.sh的作用是用于记录日志
@@ -72,6 +73,7 @@ echo "    下载成功，tab[$var_tabCount]条，data[$var_dataCount]条"
 
 # 执行tab下的脚本
 echo "    开始执行tab脚本"
+IFS=$(echo -en "\n\b")
 var_tabFiles=`ls /localPath/scripts_$1/tab/`
 for file in $var_tabFiles
 do
@@ -86,6 +88,7 @@ done
 
 # 执行data下的脚本
 echo "    开始执行data脚本"
+IFS=$(echo -en "\n\b")
 var_dataFiles=`ls /localPath/scripts_$1/data/`
 for file in $var_dataFiles
 do
