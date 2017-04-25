@@ -77,6 +77,7 @@ IFS=$(echo -en "\n\b")
 var_tabFiles=`ls /localPath/scripts_$1/tab/`
 for file in $var_tabFiles
 do
+	echo "        开始执行tab:$file"
 	mysql -hxxx.xxx.xxx.xxx -uxxxxxx -pxxxxxx -Dxxxxxx --default-character-set=utf8 < /localPath/scripts_$1/tab/$file
 	invar_result=$?
 	if [ 0 -eq $invar_result ]; then
@@ -92,6 +93,7 @@ IFS=$(echo -en "\n\b")
 var_dataFiles=`ls /localPath/scripts_$1/data/`
 for file in $var_dataFiles
 do
+	echo "        开始执行data:$file"
 	mysql -hxxx.xxx.xxx.xxx -uxxxxxx -pxxxxxx -Dxxxxxx --default-character-set=utf8 < /localPath/scripts_$1/data/$file
 	invar_result=$?
 	if [ 0 -eq $invar_result ]; then
